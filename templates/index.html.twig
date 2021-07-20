@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Страница приветствия</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{{ asset('public/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{{ asset('public/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('public/lib/animate-css/animate.min.css')}}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
+
+
+</head>
+
+ 
+   
+
+ <body>
+  <div id="preloader"></div>
+
+  <!--==========================
+  Hero Section
+  ============================-->
+  <section id="hero">
+    <div class="hero-container">
+      <div class="wow fadeIn">
+        <div class="hero-logo">
+          <img class="" src="{{ asset('public/img/logo.png')}}" alt="Imperial">
+        </div>
+
+        <h1>Welcome to SilverFilm</h1>
+        <h2>We show <span class="rotating">moovies, cartoons, clips</span></h2>
+        <div class="actions">
+          <a href="{{ path('registration')}}" class="btn-get-started">Регистрация</a>
+          <a href="{{ path('app_login')}}" class="btn-services">Войти в аккаунт</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Required JavaScript Libraries -->
+  <script src="{{ asset('public/lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('public/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/hoverIntent.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/superfish.min.js')}}"></script>
+  <script src="{{ asset('public/lib/morphext/morphext.min.js')}}"></script>
+  <script src="{{ asset('public/lib/wow/wow.min.js')}}"></script>
+  <script src="{{ asset('public/lib/stickyjs/sticky.js')}}"></script>
+  <script src="{{ asset('public/lib/easing/easing.js')}}"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="{{ asset('public/js/custom.js')}}"></script>
+
+  <script src="{{ asset('public/contactform/contactform.js')}}"></script>
+    </body>
+ </html>

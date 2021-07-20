@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+ <head>
+<meta charset="utf-8">
+   <title>Библиотека</title>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{{ asset('public/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{{ asset('public/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('public/lib/animate-css/animate.min.css')}}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
+
+<style>
+   body {
+    counter-reset: heading;
+	background-image: url("{{ asset('public/img/back1.jpg')}}");
+background-size: cover;
+   }
+   h3:before {
+    counter-increment: heading; 
+    content: counter(heading) ". "; 
+   }
+   h3{
+   font-family: Arial;
+   color: black;
+   }
+   #list{
+   font-family: Arial;
+text-align: center;
+
+}
+
+#frm{
+margin-left: auto;
+    margin-right: auto;
+
+width: 820px;
+background: #fff;
+}
+
+#ab{
+margin-left: auto;
+    margin-right: auto;
+width: 820px;
+background: #fff;
+
+}
+
+
+  </style>
+</head>
+
+<body>
+ <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+       <img src="{{ asset('public/img/logo.png')}}" alt="" title="" /></img>
+        </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="{{ path('homepage')}}"}>Профиль</a></li>
+		   {% if is_granted('ROLE_ADMIN') %}
+          <li><a href="{{ path('films_new') }}">Добавить фильм</a></li>
+		  {% endif %}
+        </ul>
+      </nav>
+      <!-- #nav-menu-container -->
+    </div>
+  </header>
+  
+  <div id="list">
+  
+   <section id="about">
+    <div class="container wow fadeInUp">
+	<div id= "ab">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="section-title">Библиотека фильмов</h2>
+		  <div class="section-title-divider"></div>
+		</div>
+	  </div>
+	  </div>
+	 </div>
+	 </section>
+	 
+<div id="frm">
+	{% if is_granted('ROLE_USER') %}
+	
+		Поиск фильма.
+   <br>
+   <form method="post">
+        <label>Название фильма:</label>
+		 <br>
+            {{ form_widget(UserFilterType.film_name) }}
+                <br>        
+        <label>Год выпуска:</label>
+		 <br>
+            {{ form_widget(UserFilterType.year) }}
+                <br>        
+        <label>Возрастное ограничение:</label>
+		 <br>
+            {{ form_widget(UserFilterType.age_limit) }}
+                <br>        
+              
+        <label>Режиссёр:</label>
+		 <br>
+            {{ form_widget(UserFilterType.director) }}
+                <br>         
+
+				
+				<label>Жанры:</label
+                <br>
+			
+			{{ form_widget(UserFilterType.janres) }}
+					
+                    
+                        <button type="submit" id="Add">Поиск</button>
+                      
+                    {{ form_widget(UserFilterType._token) }}
+                </form>
+				
+	{% endif %}
+	<br>
+        <tbody>
+		
+        {% for film in films %}
+			
+            <tr>
+                <a href="{{ path('films_show', {'id': film.id}) }}">
+                <td><h3>{{ film.filmName }} ({{ film.year }})</h3></td>
+				<br>
+				Режиссёр:<td>{{ film.director }}</td>
+                <br>
+                <td><img src="{{ film.Picture }}" width="270" height="400"></td>
+				<br>
+				</a>
+				Жанры:
+				<br>
+				{% for janre in film.janres %}
+				
+                {{ janre.janreName }}
+				{% endfor %}
+				<br><br><br>
+				
+            </tr>
+			
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+		
+    </table>
+	</div>
+	</div>
+	
+<script src="{{ asset('public/lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('public/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/hoverIntent.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/superfish.min.js')}}"></script>
+  <script src="{{ asset('public/lib/morphext/morphext.min.js')}}"></script>
+  <script src="{{ asset('public/lib/wow/wow.min.js')}}"></script>
+  <script src="{{ asset('public/lib/stickyjs/sticky.js')}}"></script>
+  <script src="{{ asset('public/lib/easing/easing.js')}}"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="{{ asset('public/js/custom.js')}}"></script>
+
+  <script src="{{ asset('public/contactform/contactform.js')}}"></script>
+    
+</body>

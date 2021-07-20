@@ -1,0 +1,41 @@
+{% block body %}
+    <!-- Navigation -->
+    <!-- Page Header -->
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                   class="form-control" placeholder="Email" required autofocus>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label for="inputPassword" class="sr-only">Password</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control"
+                                   placeholder="Password" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="control-group text-center">
+                        <div class="form-group floating-label-form-group controls">
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        Sign in
+                    </button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+{% endblock %}

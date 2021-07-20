@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Страница регистрации</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{{ asset('public/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{{ asset('public/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('public/lib/animate-css/animate.min.css')}}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
+
+
+</head>
+<body>
+
+ <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <img src="{{ asset('public/img/logo.png')}}" alt="" title="" /></img>
+        
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="{{ path('home')}}"><h3>Домашняя страница</h3></a></li>
+        </ul>
+      </nav>
+      <!-- #nav-menu-container -->
+    </div>
+  </header> 
+  
+  
+<section id="contact">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="section-title">Авторизация</h3>
+          <div class="section-title-divider"></div>
+          <p class="section-description">Для доступа к библиотеке фильмов вам необходимо авторизоваться! 
+		  <br>
+		  По вопросам авторизации обращайтесь по контактным данным ниже</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 col-md-push-2">
+          <div class="info">
+            <div>
+              <i class="fa fa-map-marker"></i>
+              <p>Ул. Гикало 9<br>Беларусь, Минск</p>
+            </div>
+
+            <div>
+              <i class="fa fa-envelope"></i>
+              <p>noreykoartem@gmail.com</p>
+            </div>
+
+            <div>
+              <i class="fa fa-phone"></i>
+              <p>+375 33 638-16-40</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-5 col-md-push-2">
+          <div class="form">
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <form action="" method="post" role="form" class="contactForm" enctype="multipart/form-data">
+             
+			{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+              <div class="form-group">
+                <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+						<div class="validation"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+							<div class="validation"></div>
+					</div>		
+               <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+              
+              <div class="text-center"><button type="submit">Войти</button></div>
+			  
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  
+	
+  <script src="{{ asset('public/lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('public/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/hoverIntent.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/superfish.min.js')}}"></script>
+  <script src="{{ asset('public/lib/morphext/morphext.min.js')}}"></script>
+  <script src="{{ asset('public/lib/wow/wow.min.js')}}"></script>
+  <script src="{{ asset('public/lib/stickyjs/sticky.js')}}"></script>
+  <script src="{{ asset('public/lib/easing/easing.js')}}"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="{{ asset('public/js/custom.js')}}"></script>
+
+  <script src="{{ asset('public/contactform/contactform.js')}}"></script>
+    </body>
+ </html>
+ 
+

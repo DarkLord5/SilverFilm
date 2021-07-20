@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Страница добавления детского аккаунта</title>
+ </head>
+ <body>
+	Добавим фильм.
+   <br>
+   <form method="post">        
+         <label>Электронная почта</label>
+         {{ form_widget(ChildType.email) }}         
+		 <br> 
+         <label>Никнейм</label>
+         {{ form_widget(ChildType.nickname) }}
+		 <br> 
+         <label>Пароль</label>
+         {{ form_widget(ChildType.plainPassword) }}  
+		 <br> 
+		 <label>Имя</label>
+         {{ form_widget(ChildType.name) }}
+		 <br> 
+         <label>Фамилия</label>
+         {{ form_widget(ChildType.surname) }}
+		 <br>
+		        
+         
+				
+                        <button type="submit" id="Add">Добавить</button>
+                      
+                    {{ form_widget(ChildType._token) }}
+                </form>
+				<a href="{{ path('homepage') }}">back to list</a>
+    </body>
+ </html>
+    
+

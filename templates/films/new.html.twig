@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Films{% endblock %}
+
+{% block body %}
+    <body>
+	Добавим фильм.
+   <br>
+   <form method="post">
+        <label>Название фильма</label>
+            {{ form_widget(AddForm.film_name) }}
+                <br>        
+        <label>Год выпуска</label>
+            {{ form_widget(AddForm.year) }}
+                <br>        
+        <label>Возрастное ограничение</label>
+            {{ form_widget(AddForm.age_limit) }}
+                <br>        
+        <label>Описание фильма</label>
+            {{ form_widget(AddForm.description) }}
+                <br>        
+        <label>Режиссёр</label>
+            {{ form_widget(AddForm.director) }}
+                <br>         
+        <label>Ссылка на файл</label>
+            {{ form_widget(AddForm.filename) }}
+				<br>
+		<label>Ссылка на картинку</label>
+            {{ form_widget(AddForm.picture) }}
+				<br>
+				
+				Жанры:
+                <br>
+			
+			{{ form_widget(AddForm.janres) }}
+					
+                    
+                        <button type="submit" id="Add">Добавить</button>
+                      
+                    {{ form_widget(AddForm._token) }}
+                </form>
+    </body>
+{% endblock %}

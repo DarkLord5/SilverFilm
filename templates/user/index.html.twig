@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+ <head>
+<meta charset="utf-8">
+   <title>Статистика пользователей</title>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{{ asset('public/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{{ asset('public/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('public/lib/animate-css/animate.min.css')}}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
+
+<style>
+   body {
+    counter-reset: heading;
+	background-image: url("{{ asset('public/img/back1.jpg')}}");
+background-size: cover;
+   }
+
+   #list{
+   font-family: Arial;
+text-align: center;
+
+}
+
+#frm{
+margin-left: auto;
+    margin-right: auto;
+
+width: 1100px;
+background: #fff;
+}
+
+#ab{
+margin-left: auto;
+    margin-right: auto;
+width: 1100px;
+background: #fff;
+
+}
+
+
+  </style>
+</head>
+
+<body>
+ <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+       <img src="{{ asset('public/img/logo.png')}}" alt="" title="" /></img>
+        </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+         <li class="menu-active"><a href="{{ path('films_index') }}">Библиотека</a></li>
+          <li><a href="{{ path('statistic')}}"}>Общая статистика</a></li>
+		  <li><a href="{{ path('homepage')}}"}>Вернуться на главную страницу</a></li>
+        </ul>
+      </nav>
+      <!-- #nav-menu-container -->
+    </div>
+  </header>
+  
+  <div id="list">
+  
+   <section id="about">
+    <div class="container wow fadeInUp">
+	<div id= "ab">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="section-title">Наши Клиенты</h2>
+		  <div class="section-title-divider"></div>
+		</div>
+	  </div>
+	  </div>
+	 </div>
+	 </section>
+	 
+<div id="frm">
+	  <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Эл. Почта</th>
+                <th>Зашифрованный пароль</th>
+                <th>Никнейм</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Роль в системе</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.nickname }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.surname }}</td>
+                <td>Клиент</td>
+               <!-- <td>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                </td> -->
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+	</div>
+	</div>
+	
+<script src="{{ asset('public/lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('public/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/hoverIntent.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/superfish.min.js')}}"></script>
+  <script src="{{ asset('public/lib/morphext/morphext.min.js')}}"></script>
+  <script src="{{ asset('public/lib/wow/wow.min.js')}}"></script>
+  <script src="{{ asset('public/lib/stickyjs/sticky.js')}}"></script>
+  <script src="{{ asset('public/lib/easing/easing.js')}}"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="{{ asset('public/js/custom.js')}}"></script>
+
+  <script src="{{ asset('public/contactform/contactform.js')}}"></script>
+    
+</body>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+		  

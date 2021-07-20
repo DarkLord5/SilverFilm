@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+   <title>Страница профиля</title>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{{ asset('public/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{{ asset('public/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('public/lib/animate-css/animate.min.css')}}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
+  
+  <style>
+body{
+background-image: url("{{ asset('public/img/back1.jpg')}}");
+background-size: cover;
+}
+
+   
+#bk{
+text-align: center;
+width: 820px;
+margin-left: auto;
+margin-right: auto;
+background: #fff;
+
+}
+
+</style>
+ </head>
+ <body>
+ <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+       <img src="{{ asset('public/img/logo.png')}}" alt="" title="" /></img>
+        </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="{{ path('films_index') }}">Библиотека</a></li>
+          <li><a href="{{ path('homepage')}}">Профиль</a></li>
+          {% if is_granted('ROLE_USER') %}
+		  {% if not app.user.childID %}
+		  <li><a href="{{ path('filter_new')}}"}>Добавить детский аккаунт</li>
+		  {% endif %}
+		  {% endif %}
+		  {% if is_granted('ROLE_USER') %}
+		  {% if app.user.childID %}
+		  <li><a href="{{ path('filter_edit', {'id': child.filter.id}) }}">Изменить детский фильтр</li>
+		  {% endif %}
+		  {% endif %}
+		  {% if is_granted('ROLE_ADMIN') %}
+		<li><a href="{{ path('statistic')}}"}>Просмотреть статистику</a></li>
+		{% endif %}
+    	{% if app.user %} 
+          <li><a href="{{ path('app_logout') }}">Выйти</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+      <!-- #nav-menu-container -->
+    </div>
+  </header>
+  <div id="bk">
+  <br>
+ {% if app.user %} <h2>Приветствую, {{ app.user.nickname}}! </h2>{% endif %} 
+   <br>
+   {% if app.user.histories %}
+	{% for body in app.user.histories %}
+	
+	Вы смотрели фильм "{{ body.film.getFilmName() }}" в {{ body.timer|date('Y-m-d H:i:s') }}
+	<br>
+	{% endfor %}
+  
+   {% endif %}
+   <br>
+   {% if app.user.childID %}
+   {% if child.histories %}
+   {% for cbody in child.histories %}
+	
+	Ваш ребёнок смотрел фильм: {{ cbody.film.getFilmName() }} в {{ cbody.timer|date('Y-m-d H:i:s') }}
+	<br>
+	{% endfor %}
+   {% endif %}
+   {% endif %}
+   <br>
+   
+   
+<script src="{{ asset('public/lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('public/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/hoverIntent.js')}}"></script>
+  <script src="{{ asset('public/lib/superfish/superfish.min.js')}}"></script>
+  <script src="{{ asset('public/lib/morphext/morphext.min.js')}}"></script>
+  <script src="{{ asset('public/lib/wow/wow.min.js')}}"></script>
+  <script src="{{ asset('public/lib/stickyjs/sticky.js')}}"></script>
+  <script src="{{ asset('public/lib/easing/easing.js')}}"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="{{ asset('public/js/custom.js')}}"></script>
+
+  <script src="{{ asset('public/contactform/contactform.js')}}"></script> 
+  </div>
+    </body>
+ </html>
